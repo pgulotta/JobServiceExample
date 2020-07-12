@@ -44,7 +44,7 @@ public final class JobServiceExample extends JobService
     @Override
     public boolean onStopJob( JobParameters jobParameters )
     {
-        // This method is not invoked
+        // This method is typically not invoked
         Log.i( TAG, "JobServiceExample.onStopJob : jobParameters.getJobId() = " + jobParameters.getJobId() );
         return false;  // Returns false to end the job entirely
     }

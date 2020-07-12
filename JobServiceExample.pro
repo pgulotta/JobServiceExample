@@ -29,7 +29,6 @@ DISTFILES += \
     android/src/com/example/jobserviceexample/JobServiceExample.java \
     android/src/com/example/jobserviceexample/ExampleJobScheduler.java \
     android/src/com/example/jobserviceexample/ExampleWork.java \
-    blogDraft.txt
 
 QML_IMPORT_PATH =
 

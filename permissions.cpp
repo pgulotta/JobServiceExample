@@ -24,7 +24,7 @@ void Permissions::requestExternalStoragePermission()
       mPermissionGranted = false;
 
       if ( QtAndroid::shouldShowRequestPermissionRationale( "android.permission.READ_EXTERNAL_STORAGE" ) ) {
-        QAndroidJniObject ( "com/twentysixapps/playitsafe/ShowPermissionRationale",
+        QAndroidJniObject ( "com/example/jobserviceexample/ShowPermissionRationale",
                                                        "(Landroid/app/Activity;)V",QtAndroid::androidActivity().object<jobject>());
         QAndroidJniEnvironment env;
 

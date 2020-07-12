@@ -53,7 +53,6 @@ Window {
                 background: Rectangle {
                     implicitWidth: 100
                     implicitHeight: 38
-                    //visible: radioDelegateId.down || radioDelegateId.highlighted
                     color: radioDelegateId.down ? "CORNFLOWERBLUE" : "TRANSPARENT"
                 }
                 text: model.name
@@ -69,16 +68,12 @@ Window {
         Button {
             text: qsTr("Apply")
             anchors.horizontalCenter: parent.horizontalCenter
-            onClicked:{
-                Controller.scheduleJobService(scheduleModelId.get(scheduleSelectorId.currentIndex).intervalMS)
-            }
+            onClicked:Controller.scheduleJobService(scheduleModelId.get(scheduleSelectorId.currentIndex).intervalMS)
         }
         Button {
             text: qsTr("Quit")
             anchors.horizontalCenter: parent.horizontalCenter
-            onClicked:{
-                Qt.quit()
-            }
+            onClicked:Qt.quit()
         }
         ListModel {
             id: scheduleModelId
