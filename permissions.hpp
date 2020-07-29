@@ -4,8 +4,9 @@
 class Permissions
 {
 public:
+  Permissions() = default;
   void requestExternalStoragePermission();
-  bool getPermissionResult();
+  bool getPermissionResult()const {return mPermissionGranted;}
 
 
 private:

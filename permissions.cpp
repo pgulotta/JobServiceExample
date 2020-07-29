@@ -1,5 +1,5 @@
 #include "permissions.hpp"
-#include <QMessageBox>
+#include <QDebug>
 #include <QApplication>
 
 #ifdef Q_OS_ANDROID
@@ -19,22 +19,7 @@ void Permissions::requestExternalStoragePermission()
   if ( request == QtAndroid::PermissionResult::Denied ) {
     QtAndroid::requestPermissionsSync( QStringList() <<  "android.permission.WRITE_EXTERNAL_STORAGE" );
     request = QtAndroid::checkPermission( "android.permission.WRITE_EXTERNAL_STORAGE" );
-
-    if ( request == QtAndroid::PermissionResult::Denied ) {
-      mPermissionGranted = false;
-
-      if ( QtAndroid::shouldShowRequestPermissionRationale( "android.permission.READ_EXTERNAL_STORAGE" ) ) {
-        QAndroidJniObject ( "com/example/jobserviceexample/ShowPermissionRationale",
-                                                       "(Landroid/app/Activity;)V",QtAndroid::androidActivity().object<jobject>());
-        QAndroidJniEnvironment env;
-
-        if ( env->ExceptionCheck() ) {
-          env->ExceptionClear();
-        }
-      }
-    } else {
-      mPermissionGranted = true;
-    }
+    mPermissionGranted = ( request == QtAndroid::PermissionResult::Denied ) ? false : true;
   } else {
     mPermissionGranted = true;
   }
@@ -42,9 +27,7 @@ void Permissions::requestExternalStoragePermission()
   #else
   mPermissionGranted = true;
   #endif
+  qInfo() << Q_FUNC_INFO << " Permission granted = " << mPermissionGranted;
 }
 
-bool Permissions::getPermissionResult()
-{
-  return mPermissionGranted;
-}
+

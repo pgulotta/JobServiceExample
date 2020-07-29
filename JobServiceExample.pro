@@ -1,5 +1,5 @@
 QT += quick
-QT += widgets # support of QMessageBox
+QT += widgets  # support of QtAndroid::requestPermissionsSync
 android:QT += androidextras # support of QAndroidJniObject
 
 CONFIG += c++1z
